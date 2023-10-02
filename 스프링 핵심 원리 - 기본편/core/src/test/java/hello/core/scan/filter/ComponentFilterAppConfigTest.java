@@ -1,4 +1,4 @@
-package hello.core.filter;
+package hello.core.scan.filter;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,8 +8,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-
-import java.lang.annotation.Annotation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,17 +27,17 @@ public class ComponentFilterAppConfigTest {
 
     @Configuration
     @ComponentScan(
-            includeFilters = @ComponentScan.Filter(
-                    type = FilterType.ANNOTATION,
+            includeFilters =
+            @ComponentScan.Filter(
                     classes = MyIncludeComponent.class
             ),
             excludeFilters = {
                     @ComponentScan.Filter(
                             type = FilterType.ANNOTATION,
                             classes = MyExcludeComponent.class),
-                    @ComponentScan.Filter(
-                            type = FilterType.ASSIGNABLE_TYPE,
-                            classes = BeanA.class)
+//                    @ComponentScan.Filter(
+//                            type = FilterType.ASSIGNABLE_TYPE,
+//                            classes = BeanA.class)
             }
 
     )
